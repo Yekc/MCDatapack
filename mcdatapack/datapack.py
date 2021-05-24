@@ -30,6 +30,26 @@ class recipes:
 	def add(self, attr, val):
 		setattr(self, attr, val)
 
+#Tags
+class tags:
+	def add(self, attr, val):
+		setattr(self, attr, val)
+
+#Predicates
+class predicates:
+	def add(self, attr, val):
+		setattr(self, attr, val)
+
+#Structures
+class structures:
+	def add(self, attr, val):
+		setattr(self, attr, val)
+
+#Dimensions
+class dimensions:
+	def add(self, attr, val):
+		setattr(self, attr, val)
+
 
 def dump(path = "", namespace = "", description = "", pack_format = "6"):
 	#Clean classes to only contain files
@@ -37,6 +57,10 @@ def dump(path = "", namespace = "", description = "", pack_format = "6"):
 	adv_filtered = [attr for attr in vars(advancements) if not attr.startswith("__") and not attr.startswith("add")]
 	loot_filtered = [attr for attr in vars(loot_tables) if not attr.startswith("__") and not attr.startswith("add")]
 	recipes_filtered = [attr for attr in vars(recipes) if not attr.startswith("__") and not attr.startswith("add")]
+	tags_filtered = [attr for attr in vars(tags) if not attr.startswith("__") and not attr.startswith("add")]
+	pred_filtered = [attr for attr in vars(predicates) if not attr.startswith("__") and not attr.startswith("add")]
+	struct_filtered = [attr for attr in vars(structures) if not attr.startswith("__") and not attr.startswith("add")]
+	dim_filtered = [attr for attr in vars(dimensions) if not attr.startswith("__") and not attr.startswith("add")]
 
 	#Update datapack information
 	info.pack_format = pack_format
@@ -68,6 +92,10 @@ def dump(path = "", namespace = "", description = "", pack_format = "6"):
 	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/advancements")
 	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/loot_tables")
 	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/recipes")
+	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/tags")
+	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/predicates")
+	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/structures")
+	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/dimensions")
 
 	#-----------------------------------------------------------------------------------------------------------------------
 
@@ -93,4 +121,28 @@ def dump(path = "", namespace = "", description = "", pack_format = "6"):
 	for i in recipes_filtered:
 		f = open(path + "/" + namespace + "/data/" + namespace + "/recipes/" + i + ".json", "w")
 		f.write(getattr(recipes, i))
+		f.close()
+
+	#Create tag files
+	for i in tags_filtered:
+		f = open(path + "/" + namespace + "/data/" + namespace + "/tags/" + i + ".json", "w")
+		f.write(getattr(tags, i))
+		f.close()
+
+	#Create predicate files
+	for i in pred_filtered:
+		f = open(path + "/" + namespace + "/data/" + namespace + "/predicates/" + i + ".json", "w")
+		f.write(getattr(predicates, i))
+		f.close()
+
+	#Create structure files
+	for i in struct_filtered:
+		f = open(path + "/" + namespace + "/data/" + namespace + "/structures/" + i + ".json", "w")
+		f.write(getattr(structures, i))
+		f.close()
+
+	#Create dimension files
+	for i in dim_filtered:
+		f = open(path + "/" + namespace + "/data/" + namespace + "/dimensions/" + i + ".json", "w")
+		f.write(getattr(dimensions, i))
 		f.close()
