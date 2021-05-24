@@ -8,6 +8,11 @@ class info:
 	description = ""
 	path = ""
 
+#Scores
+class scores:
+	def add(self, attr, val):
+		setattr(self, attr, val)
+
 #Functions
 class functions:
 	def add(self, attr, val):

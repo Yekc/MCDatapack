@@ -53,6 +53,38 @@ def say(function = "", text = ""):
 	except:
 		print(colored("Function \"" + function + "\" is not defined.", "red"))
 
+#Create a score
+def new_score(function = "", name = "", criteria = ""):
+	try:
+		exec("d.functions." + function + " += \"scoreboard objectives add " + name + " " + criteria + "\"")
+		d.scores.add(d.scores, name, 0)
+	except:
+		print(colored("Function \"" + function + "\" is not defined.", "red"))
+
+#Add to score value
+def increase_score(function = "", target = "", name = "", amount = 0):
+	try:
+		exec("d.functions." + function + " += \"scoreboard players add " + target + " " + name + " " + str(amount) + "\"")
+		exec("d.scores." + name + " += " + amount)
+	except:
+		print(colored("Function \"" + function + "\" is not defined.", "red"))
+
+#Remove from score value
+def decrease_score(function = "", target = "", name = "", amount = 0):
+	try:
+		exec("d.functions." + function + " += \"scoreboard players remove " + target + " " + name + " " + str(amount) + "\"")
+		exec("d.scores." + name + " -= " + amount)
+	except:
+		print(colored("Function \"" + function + "\" is not defined.", "red"))
+
+#Set score value
+def set_score(function = "", target = "", name = "", value = 0):
+	try:
+		exec("d.functions." + function + " += \"scoreboard players remove " + target + " " + name + " " + str(value) + "\"")
+		exec("d.scores." + name + " = " + value)
+	except:
+		print(colored("Function \"" + function + "\" is not defined.", "red"))
+
 #---------- ADVANCEMENTS
 
 #Create advancement
