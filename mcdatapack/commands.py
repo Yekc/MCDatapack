@@ -15,6 +15,10 @@ def new_advancement(name):
 def new_loot_table(name):
 	d.loot_tables.add(d.loot_tables, name, "")
 
+#Create a new recipe
+def new_recipe(name):
+	d.recipes.add(d.recipes, name, "")
+
 #---------- RAW COMMANDS
 
 #Create a raw command
@@ -50,3 +54,12 @@ def loot_table(loot_table = "", json = "{}"):
 		exec("d.loot_tables." + loot_table + " += \"" + json + "\"")
 	except:
 		print(colored("Loot table \"" + loot_table + "\" is not defined.", "red"))
+
+#---------- RECIPES
+
+#Create recipe
+def recipe(recipe = "", json = "{}"):
+	try:
+		exec("d.recipes." + recipe + " += \"" + json + "\"")
+	except:
+		print(colored("Recipe \"" + recipe + "\" is not defined.", "red"))

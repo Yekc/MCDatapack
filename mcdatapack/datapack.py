@@ -25,11 +25,18 @@ class loot_tables:
 	def add(self, attr, val):
 		setattr(self, attr, val)
 
+#Recipes
+class recipes:
+	def add(self, attr, val):
+		setattr(self, attr, val)
+
 
 def dump(path = "", namespace = "", description = "", pack_format = "6"):
-	#Clean functions to only contain functions
+	#Clean classes to only contain files
 	functions_filtered = [attr for attr in vars(functions) if not attr.startswith("__") and not attr.startswith("add")]
 	adv_filtered = [attr for attr in vars(advancements) if not attr.startswith("__") and not attr.startswith("add")]
+	loot_filtered = [attr for attr in vars(loot_tables) if not attr.startswith("__") and not attr.startswith("add")]
+	recipes_filtered = [attr for attr in vars(recipes) if not attr.startswith("__") and not attr.startswith("add")]
 
 	#Update datapack information
 	info.pack_format = pack_format
@@ -59,6 +66,8 @@ def dump(path = "", namespace = "", description = "", pack_format = "6"):
 	load.close()
 	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/functions")
 	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/advancements")
+	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/loot_tables")
+	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/recipes")
 
 	#-----------------------------------------------------------------------------------------------------------------------
 
@@ -72,4 +81,16 @@ def dump(path = "", namespace = "", description = "", pack_format = "6"):
 	for i in adv_filtered:
 		f = open(path + "/" + namespace + "/data/" + namespace + "/advancements/" + i + ".json", "w")
 		f.write(getattr(advancements, i))
+		f.close()
+
+	#Create loot table files
+	for i in loot_filtered:
+		f = open(path + "/" + namespace + "/data/" + namespace + "/loot_tables/" + i + ".json", "w")
+		f.write(getattr(loot_tables, i))
+		f.close()
+
+	#Create recipe files
+	for i in recipes_filtered:
+		f = open(path + "/" + namespace + "/data/" + namespace + "/recipes/" + i + ".json", "w")
+		f.write(getattr(recipes, i))
 		f.close()
