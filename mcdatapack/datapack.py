@@ -29,6 +29,7 @@ class loot_tables:
 def dump(path = "", namespace = "", description = "", pack_format = "6"):
 	#Clean functions to only contain functions
 	functions_filtered = [attr for attr in vars(functions) if not attr.startswith("__") and not attr.startswith("add")]
+	adv_filtered = [attr for attr in vars(advancements) if not attr.startswith("__") and not attr.startswith("add")]
 
 	#Update datapack information
 	info.pack_format = pack_format
@@ -57,11 +58,18 @@ def dump(path = "", namespace = "", description = "", pack_format = "6"):
 	load.write("""{\n "values": [\n \"""" + namespace + """:load\"\n ]\n}""")
 	load.close()
 	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/functions")
+	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/advancements")
 
 	#-----------------------------------------------------------------------------------------------------------------------
 
-	#For every variable create a function file
+	#Create function files
 	for i in functions_filtered:
 		f = open(path + "/" + namespace + "/data/" + namespace + "/functions/" + i + ".mcfunction", "w")
 		f.write(getattr(functions, i))
+		f.close()
+
+	#Create advancement files
+	for i in adv_filtered:
+		f = open(path + "/" + namespace + "/data/" + namespace + "/advancements/" + i + ".json", "w")
+		f.write(getattr(advancements, i))
 		f.close()
