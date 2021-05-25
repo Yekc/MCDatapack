@@ -55,6 +55,21 @@ class dimensions:
 	def add(self, attr, val):
 		setattr(self, attr, val)
 
+#Default Loot tables
+class def_loot_tables:
+	def add(self, attr, val):
+		setattr(self, attr, val)
+
+#Default Recipes
+class def_recipes:
+	def add(self, attr, val):
+		setattr(self, attr, val)
+
+#Default Structures
+class def_structures:
+	def add(self, attr, val):
+		setattr(self, attr, val)
+
 
 def dump(path = "", namespace = "", description = "", pack_format = "6"):
 	#Clean classes to only contain files
@@ -66,6 +81,9 @@ def dump(path = "", namespace = "", description = "", pack_format = "6"):
 	pred_filtered = [attr for attr in vars(predicates) if not attr.startswith("__") and not attr.startswith("add")]
 	struct_filtered = [attr for attr in vars(structures) if not attr.startswith("__") and not attr.startswith("add")]
 	dim_filtered = [attr for attr in vars(dimensions) if not attr.startswith("__") and not attr.startswith("add")]
+	def_loot_filtered = [attr for attr in vars(def_loot_tables) if not attr.startswith("__") and not attr.startswith("add")]
+	def_recipes_filtered = [attr for attr in vars(def_recipes) if not attr.startswith("__") and not attr.startswith("add")]
+	def_struct_filtered = [attr for attr in vars(def_structures) if not attr.startswith("__") and not attr.startswith("add")]
 
 	#Update datapack information
 	info.pack_format = pack_format
@@ -101,6 +119,9 @@ def dump(path = "", namespace = "", description = "", pack_format = "6"):
 	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/predicates")
 	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/structures")
 	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/dimensions")
+	os.mkdir(path + "/" + namespace + "/data/minecraft/loot_tables")
+	os.mkdir(path + "/" + namespace + "/data/minecraft/recipes")
+	os.mkdir(path + "/" + namespace + "/data/minecraft/structures")
 
 	#-----------------------------------------------------------------------------------------------------------------------
 
@@ -150,4 +171,22 @@ def dump(path = "", namespace = "", description = "", pack_format = "6"):
 	for i in dim_filtered:
 		f = open(path + "/" + namespace + "/data/" + namespace + "/dimensions/" + i + ".json", "w")
 		f.write(getattr(dimensions, i))
+		f.close()
+
+		#Create default loot table files
+	for i in def_loot_filtered:
+		f = open(path + "/" + namespace + "/data/" + "minecraft" + "/loot_tables/" + i + ".json", "w")
+		f.write(getattr(def_loot_tables, i))
+		f.close()
+
+	#Create default recipe files
+	for i in def_recipes_filtered:
+		f = open(path + "/" + namespace + "/data/" + "minecraft" + "/recipes/" + i + ".json", "w")
+		f.write(getattr(def_recipes, i))
+		f.close()
+
+	#Create structure files
+	for i in def_struct_filtered:
+		f = open(path + "/" + namespace + "/data/" + "minecraft" + "/structures/" + i + ".json", "w")
+		f.write(getattr(def_structures, i))
 		f.close()

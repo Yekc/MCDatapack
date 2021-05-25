@@ -65,7 +65,7 @@ def new_score(function = "", name = "", criteria = ""):
 def increase_score(function = "", target = "", name = "", amount = 0):
 	try:
 		exec("d.functions." + function + " += \"scoreboard players add " + target + " " + name + " " + str(amount) + "\"")
-		exec("d.scores." + name + " += " + amount)
+		exec("d.scores." + name + " += " + str(amount))
 	except:
 		print(colored("Function \"" + function + "\" is not defined.", "red"))
 
@@ -73,7 +73,7 @@ def increase_score(function = "", target = "", name = "", amount = 0):
 def decrease_score(function = "", target = "", name = "", amount = 0):
 	try:
 		exec("d.functions." + function + " += \"scoreboard players remove " + target + " " + name + " " + str(amount) + "\"")
-		exec("d.scores." + name + " -= " + amount)
+		exec("d.scores." + name + " -= " + str(amount))
 	except:
 		print(colored("Function \"" + function + "\" is not defined.", "red"))
 
@@ -81,9 +81,16 @@ def decrease_score(function = "", target = "", name = "", amount = 0):
 def set_score(function = "", target = "", name = "", value = 0):
 	try:
 		exec("d.functions." + function + " += \"scoreboard players remove " + target + " " + name + " " + str(value) + "\"")
-		exec("d.scores." + name + " = " + value)
+		exec("d.scores." + name + " = " + str(value))
 	except:
 		print(colored("Function \"" + function + "\" is not defined.", "red"))
+
+#Get score value
+def get_score(name = ""):
+	value = 0
+	exec("value = d.scores." + name)
+	exec("print(d.scores." + name + ")")
+	return value
 
 #---------- ADVANCEMENTS
 
@@ -97,20 +104,32 @@ def advancement(advancement = "", json = "{}"):
 #---------- LOOT TABLES
 
 #Create loot table
-def loot_table(loot_table = "", json = "{}"):
-	try:
-		exec("d.loot_tables." + loot_table + " += \"" + json + "\"")
-	except:
-		print(colored("Loot table \"" + loot_table + "\" is not defined.", "red"))
+def loot_table(loot_table = "", json = "{}", default_namespace = False):
+	if default_namespace == True:
+		try:
+			exec("d.def_loot_tables." + loot_table + " += \"" + json + "\"")
+		except:
+			print(colored("Loot table \"" + loot_table + "\" is not defined.", "red"))
+	else:
+		try:
+			exec("d.loot_tables." + loot_table + " += \"" + json + "\"")
+		except:
+			print(colored("Loot table \"" + loot_table + "\" is not defined.", "red"))
 
 #---------- RECIPES
 
 #Create recipe
-def recipe(recipe = "", json = "{}"):
-	try:
-		exec("d.recipes." + recipe + " += \"" + json + "\"")
-	except:
-		print(colored("Recipe \"" + recipe + "\" is not defined.", "red"))
+def recipe(recipe = "", json = "{}", default_namespace = False):
+	if default_namespace == True:
+		try:
+			exec("d.def_recipes." + recipe + " += \"" + json + "\"")
+		except:
+			print(colored("Recipe \"" + recipe + "\" is not defined.", "red"))
+	else:
+		try:
+			exec("d.recipes." + recipe + " += \"" + json + "\"")
+		except:
+			print(colored("Recipe \"" + recipe + "\" is not defined.", "red"))
 
 #---------- TAGS
 
@@ -133,11 +152,17 @@ def predicate(predicate = "", json = "{}"):
 #---------- STRUCTURES
 
 #Create structure
-def structure(structure = "", json = "{}"):
-	try:
-		exec("d.structures." + structure + " += \"" + json + "\"")
-	except:
-		print(colored("Structure \"" + structure + "\" is not defined.", "red"))
+def structure(structure = "", json = "{}", default_namespace = False):
+	if default_namespace == True:
+		try:
+			exec("d.def_structures." + structure + " += \"" + json + "\"")
+		except:
+			print(colored("Structure \"" + structure + "\" is not defined.", "red"))
+	else:
+		try:
+			exec("d.structures." + structure + " += \"" + json + "\"")
+		except:
+			print(colored("Structure \"" + structure + "\" is not defined.", "red"))
 
 #---------- PREDICATES
 

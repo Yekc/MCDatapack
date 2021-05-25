@@ -1,0 +1,1 @@
+scoreboard objectives add test dummyscoreboard players add @a test 5
