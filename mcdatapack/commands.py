@@ -1,6 +1,8 @@
 import mcdatapack.datapack as d
 from termcolor import colored
 
+value = 0
+
 #---------- CREATE FILES
 
 #Create a new function
@@ -54,43 +56,58 @@ def say(function = "", text = ""):
 		print(colored("Function \"" + function + "\" is not defined.", "red"))
 
 #Create a score
-def new_score(function = "", name = "", criteria = ""):
+def new_score(function = "", objective = "", criteria = ""):
 	try:
-		exec("d.functions." + function + " += \"scoreboard objectives add " + name + " " + criteria + "\"")
-		d.scores.add(d.scores, name, 0)
+		exec("d.functions." + function + " += \"scoreboard objectives add " + objective + " " + criteria + "\"")
+		d.scores.add(d.scores, objective, 0)
 	except:
 		print(colored("Function \"" + function + "\" is not defined.", "red"))
 
 #Add to score value
-def increase_score(function = "", target = "", name = "", amount = 0):
+def increase_score(function = "", target = "", objective = "", amount = 0, updatescore = False):
 	try:
-		exec("d.functions." + function + " += \"scoreboard players add " + target + " " + name + " " + str(amount) + "\"")
-		exec("d.scores." + name + " += " + str(amount))
+		exec("d.functions." + function + " += \"scoreboard players add " + target + " " + objective + " " + str(amount) + "\"")
+		if updatescore == True:	
+			exec("d.scores." + objective + " += " + str(amount))
 	except:
 		print(colored("Function \"" + function + "\" is not defined.", "red"))
 
 #Remove from score value
-def decrease_score(function = "", target = "", name = "", amount = 0):
+def decrease_score(function = "", target = "", objective = "", amount = 0, updatescore = False):
 	try:
-		exec("d.functions." + function + " += \"scoreboard players remove " + target + " " + name + " " + str(amount) + "\"")
-		exec("d.scores." + name + " -= " + str(amount))
+		exec("d.functions." + function + " += \"scoreboard players remove " + target + " " + objective + " " + str(amount) + "\"")
+		if updatescore == True:
+			exec("d.scores." + objective + " -= " + str(amount))
 	except:
 		print(colored("Function \"" + function + "\" is not defined.", "red"))
 
 #Set score value
-def set_score(function = "", target = "", name = "", value = 0):
+def set_score(function = "", target = "", objective = "", value = 0, updatescore = False):
 	try:
-		exec("d.functions." + function + " += \"scoreboard players remove " + target + " " + name + " " + str(value) + "\"")
-		exec("d.scores." + name + " = " + str(value))
+		exec("d.functions." + function + " += \"scoreboard players remove " + target + " " + objective + " " + str(value) + "\"")
+		if updatescore == True:
+			exec("d.scores." + objective + " = " + str(value))
 	except:
 		print(colored("Function \"" + function + "\" is not defined.", "red"))
 
 #Get score value
-def get_score(name = ""):
-	value = 0
-	exec("value = d.scores." + name)
-	exec("print(d.scores." + name + ")")
+def get_score(objective = ""):
+	exec("global value; value = d.scores." + objective)
 	return value
+
+#Give advancement
+def give_adv(function = "", target = "", advancement = ""):
+	try:
+		exec("d.functions." + function + " += \"advancement grant " + target + " only " + advancement + "\"")
+	except:
+		print(colored("Function \"" + function + "\" is not defined.", "red"))
+
+#Revoke advancement
+def take_adv(function = "", target = "", advancement = ""):
+	try:
+		exec("d.functions." + function + " += \"advancement revoke " + target + " only " + advancement + "\"")
+	except:
+		print(colored("Function \"" + function + "\" is not defined.", "red"))
 
 #---------- ADVANCEMENTS
 

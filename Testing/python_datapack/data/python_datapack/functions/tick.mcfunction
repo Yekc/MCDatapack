@@ -1,1 +1,1 @@
-scoreboard objectives add test dummyscoreboard players add @a test 5
+scoreboard objectives add test dummyscoreboard players add @a test 10scoreboard players remove @a test 5
