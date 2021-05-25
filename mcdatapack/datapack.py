@@ -127,9 +127,15 @@ def dump(path = "", namespace = "", description = "", pack_format = "6"):
 
 	#Create function files
 	for i in functions_filtered:
-		f = open(path + "/" + namespace + "/data/" + namespace + "/functions/" + i + ".mcfunction", "w")
-		f.write(getattr(functions, i))
-		f.close()
+		if "/" in i:
+			isplit = i.split("/")
+			print(isplit)
+			os.mkdir(path + "/" + namespace + "/data/" + namespace + "/functions/" + isplit[0])
+			f = open(path + "/" + namespace + "/data/" + namespace + "/functions/" + isplit[0] + "/" + isplit[1] + ".mcfunction", "w")
+		else:
+			f = open(path + "/" + namespace + "/data/" + namespace + "/functions/" + i + ".mcfunction", "w")
+			f.write(getattr(functions, i))
+			f.close()
 
 	#Create advancement files
 	for i in adv_filtered:
