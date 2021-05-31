@@ -109,6 +109,18 @@ def take_adv(function = "", target = "", advancement = ""):
 	except:
 		print(colored("Function \"" + function + "\" is not defined.", "red"))
 
+#---------- TEMPLATE COMMANDS
+
+#Custom nbt crafting
+def craft_nbt(function = "", recipe = "", advancement = "", recipe_json = "", give = ""):
+	try:
+		exec("d.functions." + function + " += \"give " + give + "\"")
+		exec("d.advancements." + advancement + " += \"{\\n    \\\"criteria\\\": {\\n        \\\"Unlocked\\\": {\\n            \\\"trigger\\\": \\\"minecraft:recipe_unlocked\\\",\\n            \\\"conditions\\\": {\\n                \\\"recipe\\\": \\\"" + recipe + "\\\"\\n            }\\n        }\\n    },\\n    \\\"rewards\\\": {\\n        \\\"function\\\": \\\"" + function + "\\\"\\n    }\\n}\"")
+		exec("d.def_recipes." + recipe + " += \"" + recipe_json + "\"")
+		print(colored("(craft_nbt) NOTE: Recipe must result in knowledge book and must not be shapeless.", "yellow"))
+	except:
+		print(colored("Function \"" + function + "\" is not defined.", "red"))
+
 #---------- ADVANCEMENTS
 
 #Create advancement
