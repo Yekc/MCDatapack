@@ -16,6 +16,26 @@
   </p>
 </p>
 
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#commands">Commands</a>
+      <ul>
+        <li><a href="#mcdatapackdatapack">mcdatapack.datapack</a></li>
+      </ul>
+      <ul>
+        <li><a href="#mcdatapackcommands">mcdatapack.commands</a></li>
+      </ul>
+      <ul>
+        <li><a href="#for-mcd-studio-only-mcdatapackmcdstudio">mcdatapack.mcdstudio</a></li>
+      </ul>
+    </li>
+    <li>
+  </ol>
+</details>
+
 This is an unfinished Python package that simplifies the creation of minecraft datapacks.
 Here is an example of what it would look like to use mcdatapack.
 ```python
