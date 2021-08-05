@@ -75,5 +75,21 @@ dump(path = "", namespace = "", description = "", pack_format = "7")       # Fun
 ```python
 import mcdatapack.commands as commands
 
+commands.new_function(name)             # Function that lets you create a new function
+commands.new_advancement(name)          # Function that lets you create a new advancement
+commands.new_loot_table(name)           # Function that lets you create a new loot table
+commands.new_recipe(name)               # Function that lets you create a new recipe
+commands.new_tag(name)                  # Function that lets you create a new tag
+commands.new_predicate(name)            # Function that lets you create a new predicate
+commands.new_structure(name)            # Function that lets you create a new structure
+commands.new_dimension(name)            # Function that lets you create a new dimension
+
+commands.command(function = "", text = "")                                                                      # Function that lets you add text to a function
+commands.say(function = "", text = "")                                                                          # Function that lets you add a /say command to a function
+commands.new_score(function = "", objective = "", criteria = "")                                                # Function that lets you add a new scoreboard objective
+commands.increase_score(function = "", target = "", objective = "", amount = "", updatescore = False)           # Function that lets you increase the value of a score by a specific amount
+                                                                                                                # (updatescore lets you update the score in the datapack.scores class)
+commands.decrease_score(function = "", target = "", objective = "", amount = "", updatescore = False)           # Function that lets you decrease the value of a score by a specific amount
+                                                                                                                # (updatescore lets you update the score in the datapack.scores class)
 
 ```
