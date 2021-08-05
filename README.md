@@ -1,5 +1,3 @@
-# mcdatapack
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -11,6 +9,7 @@
 
   <p align="center">
     Create Minecraft datapacks in Python!
+    <br />
     Used by MCD Studio (Work in progress)
     <br />
     <br />
