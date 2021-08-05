@@ -125,4 +125,29 @@ commands.craft_nbt(function = "", recipe = "", advancement = "", recipe_json = "
 commands.advancement(advancement = "", json = "{}")
 # Function that lets you create an advancement
 
+commands.loot_table(loot_table = "", json = "{}", default_namespace = False)
+# Function that lets you create a loot table
+# "default_namespace" determines whether the loot table will be in the default minecraft namespace or in your custom namespace
+
+commands.recipe(recipe = "", json = "{}", default_namespace = False)
+# Function that lets you create a recipe
+# "default_namespace" determines whether the recipe will be in the default minecraft namespace or in your custom namespace
+
+commands.tag(tag = "", json = "{}")
+# Function that lets you create a tag
+
+commands.predicate(predicate = "", json = "{}")
+# Function that lets you create a predicate
+
+commands.structure(structure = "", json = "{}", default_namespace = False)
+# Function that lets you create a structure
+# "default_namespace" determines whether the structure will be in the default minecraft namespace or in your custom namespace
+
+commands.dimension(dimension = "", json = "{}")
+# Function that lets you create a dimension
+```
+
+### (For MCD Studio only) mcdatapack.mcdstudio
+```python
+
 ```
