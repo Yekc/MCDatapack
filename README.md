@@ -149,5 +149,9 @@ commands.dimension(dimension = "", json = "{}")
 
 ### (For MCD Studio only) mcdatapack.mcdstudio
 ```python
-
+mcdstudio.output(text = "")       # Function that lets you send output to the MCD Studio output window
+mcdstudio.resetOutput()           # Function that lets you clear the output from the MCD Studio output window
 ```
+
+---
+
