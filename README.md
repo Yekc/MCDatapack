@@ -32,7 +32,6 @@
         <li><a href="#for-mcd-studio-only-mcdatapackmcdstudio">mcdatapack.mcdstudio</a></li>
       </ul>
     </li>
-    <li>
   </ol>
 </details>
 
