@@ -34,6 +34,7 @@
     </li>
   </ol>
 </details>
+  
 
 This is an unfinished Python package that simplifies the creation of minecraft datapacks.
 Here is an example of what it would look like to use mcdatapack.
