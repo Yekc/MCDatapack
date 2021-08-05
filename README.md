@@ -5,7 +5,7 @@
     <img src="images/logo.png" alt="Logo" width="120" height="120">
   </a>
 
-  <h2 align="center">MCDatapack</h2>
+  <h2 align="center">  MCDatapack</h2>
 
   <p align="center">
     Create Minecraft datapacks in Python!
