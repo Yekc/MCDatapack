@@ -193,4 +193,4 @@ Here is a screenshot of what it looks like so far:
   
 <img src="images/mcdexample.png" alt="MCDExample" width="1106" height="600">  
   
-This is mainly just a project I am doing for fun, and also as a learning experience.
+This is mainly just a project I am doing for fun, and also as a learning experience for me.
