@@ -32,6 +32,12 @@
         <li><a href="#for-mcd-studio-only-mcdatapackmcdstudio">mcdatapack.mcdstudio</a></li>
       </ul>
     </li>
+    <li>
+      <a href="#mcd-studio">MCD Studio</a>
+      <ul>
+        <li><a href="#what-is-mcd-studio">What is MCD Studio?</a></li>
+      </ul>
+    </li>
   </ol>
 </details>
 
@@ -177,3 +183,14 @@ mcdstudio.resetOutput()           # Function that lets you clear the output from
 ```
 
 ---
+## MCD Studio
+
+### What is MCD Studio?
+MCD Studio is an editor for the mcdatapack package made in VB.Net.  
+It is still being worked on, but will be released soon.  
+  
+Here is a screenshot of what it looks like so far:  
+  
+<img src="images/mcdexample.png" alt="MCDExample" width="1106" height="600">  
+  
+This is mainly just a project I am doing for fun, and also as a learning experience.
