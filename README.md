@@ -84,12 +84,45 @@ commands.new_predicate(name)            # Function that lets you create a new pr
 commands.new_structure(name)            # Function that lets you create a new structure
 commands.new_dimension(name)            # Function that lets you create a new dimension
 
-commands.command(function = "", text = "")                                                                      # Function that lets you add text to a function
-commands.say(function = "", text = "")                                                                          # Function that lets you add a /say command to a function
-commands.new_score(function = "", objective = "", criteria = "")                                                # Function that lets you add a new scoreboard objective
-commands.increase_score(function = "", target = "", objective = "", amount = "", updatescore = False)           # Function that lets you increase the value of a score by a specific amount
-                                                                                                                # (updatescore lets you update the score in the datapack.scores class)
-commands.decrease_score(function = "", target = "", objective = "", amount = "", updatescore = False)           # Function that lets you decrease the value of a score by a specific amount
-                                                                                                                # (updatescore lets you update the score in the datapack.scores class)
+commands.command(function = "", text = "")
+# Function that lets you add text to a function
+
+commands.say(function = "", text = "")
+# Function that lets you add a /say command to a function
+
+commands.new_score(function = "", objective = "", criteria = "")
+# Function that lets you add a new scoreboard objective
+
+commands.increase_score(function = "", target = "", objective = "", amount = "", updatescore = False)
+# Function that lets you increase the value of a score by a specific amount
+# (updatescore lets you update the score in the datapack.scores class)
+
+commands.decrease_score(function = "", target = "", objective = "", amount = "", updatescore = False)
+# Function that lets you decrease the value of a score by a specific amount
+# (updatescore lets you update the score in the datapack.scores class)
+
+commands.set_score(function = "", target = "", objective = "", value = "", updatescore = False)
+# Function that lets you set the value of a score to a specific amount
+# (updatescore lets you update the score in the datapack.scores class)
+
+commands.get_score(objective = "")
+# Function that returns the value of a score
+
+commands.give_adv(function = "", target = "", advancement = "")
+# Function that lets you grant a player an advancement
+
+commands.take_adv(function = "", target = "", advancement = "")
+# Function that lets you revoke an advancement from a player
+
+commands.craft_nbt(function = "", recipe = "", advancement = "", recipe_json = "", give = "")
+# Allows you to create recipes where the result item has custom nbt
+# "function" should be the function with the give command for the item (give = "" being the give command)
+# "recipe" should be the recipe file where the crafting recipe will be stored
+# "advancement" should be an empty advancement file (custom nbt crafting requires an advancement file, the function will write the advancement json for you)
+# "recipe_json" should be the json for the crafting recipe for the item. It must NOT be shapeless and MUST result in a knowledge book
+# "give" should be the give command for the item you want to be crafted
+
+commands.advancement(advancement = "", json = "{}")
+# Function that lets you create an advancement
 
 ```
